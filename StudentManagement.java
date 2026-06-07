@@ -36,9 +36,58 @@ public class StudentManagement {
                         students.add(new Student(id, name, marks));
     
                         System.out.println("Student added successfully!");
-                    break;
+                        break;
+                    case 2:
+                        if (students.isEmpty()) {
+                            System.out.println("No student records available.");
+                        } else {
+                            System.out.println("\nStudent Records:");
+                            for (Student student : students) {
+                                student.displayStudent();
+                            }
+                        }
+                        break;
+
+                    case 3:
+                        System.out.print("Enter Student ID to search: ");
+                        String searchId = sc.nextLine();
+    
+                        boolean found = false;
+    
+                        for (Student student : students) {
+                            if (student.getStudentId().equals(searchId)) {
+                                System.out.println("\nStudent Found:");
+                                student.displayStudent();
+                                found = true;
+                                break;
+                            }
+                        }
+    
+                        if (!found) {
+                            System.out.println("Student not found.");
+                        }
+                        break;
+    
+                    case 4:
+                        if (students.isEmpty()) {
+                            System.out.println("No student records available.");
+                        } else {
+                            double total = 0;
+    
+                            for (Student student : students) {
+                                total += student.getMarks();
+                            }
+    
+                            double average = total / students.size();
+    
+                            System.out.println("Average Marks:"+average);
+                        }
+                        break;
+    
+                    case 5:
+                        System.out.println("Exiting.....");
+                        break;
                     
-              
                     default:
                         System.out.println("Invalid choice!");
             }
